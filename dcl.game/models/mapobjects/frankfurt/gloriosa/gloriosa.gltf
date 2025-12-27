@@ -1,0 +1,141 @@
+{
+   "accessors" : [
+      {
+         "bufferView" : 0,
+         "byteOffset" : 0,
+         "componentType" : 5123,
+         "count" : 2538,
+         "max" : [ 2537 ],
+         "min" : [ 0 ],
+         "type" : "SCALAR"
+      },
+      {
+         "bufferView" : 1,
+         "byteOffset" : 0,
+         "componentType" : 5126,
+         "count" : 2538,
+         "max" : [ 108.796875, 16, 108.3750076293945 ],
+         "min" : [ -108.796875, -240, -108.3749923706055 ],
+         "type" : "VEC3"
+      },
+      {
+         "bufferView" : 2,
+         "byteOffset" : 0,
+         "componentType" : 5126,
+         "count" : 2538,
+         "type" : "VEC3"
+      },
+      {
+         "bufferView" : 3,
+         "byteOffset" : 0,
+         "componentType" : 5126,
+         "count" : 2538,
+         "max" : [ 1, 1 ],
+         "min" : [ 0, 0 ],
+         "type" : "VEC2"
+      }
+   ],
+   "asset" : {
+      "extras" : {
+         "date" : "Fri Oct 10 18:20:23 2025",
+         "website" : "http://www.unwrap3d.com"
+      },
+      "generator" : "Ultimate Unwrap3D Pro 4 (x64) v4.07",
+      "version" : "2.0"
+   },
+   "bufferViews" : [
+      {
+         "buffer" : 0,
+         "byteLength" : 5076,
+         "byteOffset" : 0,
+         "target" : 34963
+      },
+      {
+         "buffer" : 0,
+         "byteLength" : 30456,
+         "byteOffset" : 5076,
+         "byteStride" : 12,
+         "target" : 34962
+      },
+      {
+         "buffer" : 0,
+         "byteLength" : 30456,
+         "byteOffset" : 35532,
+         "byteStride" : 12,
+         "target" : 34962
+      },
+      {
+         "buffer" : 0,
+         "byteLength" : 20304,
+         "byteOffset" : 65988,
+         "byteStride" : 8,
+         "target" : 34962
+      }
+   ],
+   "buffers" : [
+      {
+         "byteLength" : 86292,
+         "uri" : "gloriosa.bin"
+      }
+   ],
+   "images" : [
+      {
+         "uri" : "gloriosa.png"
+      }
+   ],
+   "materials" : [
+      {
+         "name" : "gloriosa_tga",
+         "pbrMetallicRoughness" : {
+            "baseColorFactor" : [ 1, 1, 1, 1 ],
+            "baseColorTexture" : {
+               "index" : 0
+            },
+            "metallicFactor" : 0
+         }
+      }
+   ],
+   "meshes" : [
+      {
+         "name" : "StaticMesh",
+         "primitives" : [
+            {
+               "attributes" : {
+                  "NORMAL" : 2,
+                  "POSITION" : 1,
+                  "TEXCOORD_0" : 3
+               },
+               "indices" : 0,
+               "material" : 0,
+               "mode" : 4
+            }
+         ]
+      }
+   ],
+   "nodes" : [
+      {
+         "mesh" : 0,
+         "name" : "StaticMesh"
+      }
+   ],
+   "samplers" : [
+      {
+         "magFilter" : 9729,
+         "minFilter" : 9986,
+         "wrapS" : 10497,
+         "wrapT" : 10497
+      }
+   ],
+   "scene" : 0,
+   "scenes" : [
+      {
+         "nodes" : [ 0 ]
+      }
+   ],
+   "textures" : [
+      {
+         "sampler" : 0,
+         "source" : 0
+      }
+   ]
+}

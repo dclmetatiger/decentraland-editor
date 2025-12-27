@@ -1,0 +1,30 @@
+Compile instructions
+
+A) Radiant / Decentraland Editor
+================================
+
+1) install MSYS64 from https://www.msys2.org/ to C:\msys64
+2) Unzip contents of netradiant-custom-master.zip to C:\msys64\src
+3) start mingw64.exe from C:\msys64
+
+Install dependencies:
+4) type: pacman -S --needed base-devel
+5) type: pacman -S --needed mingw-w64-x86_64-{toolchain,qt5-base,qt5-svg,assimp,libxml2}
+6) type: pacman -S --needed unzip svn git
+
+Compile the source
+7) Type: cd /c/msys64/src
+8) Type: make MAKEFILE_CONF=msys2-Makefile.conf BUILD=release -j$(nproc)
+
+The compiled folder can be found at C:\msys64\src\install - copy the updated files to the Decentraland Editor folder and overwrite them. Rename "radiant.exe" to "DecentralandEditor.exe"
+
+
+B) GLB Viewer (Blitzmax NG Tool)
+================================
+
+1) download "BlitzmaxNG.zip" from https://extrasolar.de/blitzbasic/?dir=2025
+2) unzip to C:\BlitzmaxNG
+3) run "MaxIDE.exe"
+4) open source/GLBviewer.bmx
+5) press F5 to compile
+6) copy "GLBviewer.exe" to Decentraland Editor main folder (where DecentralandEditor.exe is located)

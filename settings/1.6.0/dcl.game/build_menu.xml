@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+
+	<project version="2.0">
+
+	<!-- Paths -->
+	<var name="logpath">[RadiantPath]logs/</var>
+	<var name="logfilename">DecentralandEditor</var>
+	<var name="scriptpath">[RadiantPath]scripts/</var>
+	<var name="pythonpath">[RadiantPath]python/python.exe</var>
+	<var name="viewerpath">[RadiantPath]GLBviewer.exe</var>
+	<var name="q3map2">&quot;[RadiantPath]q3map2.[ExecutableType]&quot; -v[ExtraResourcePaths]<cond value="[MonitorAddress]"> -connect [MonitorAddress]</cond> -game quake3 -fs_basepath &quot;[EnginePath]&quot;<cond value="[GameName]"> -fs_game [GameName]</cond></var>
+	<var name="mappath">[UserEnginePath][GameName]/maps/[MapName]</var>
+	<var name="path">[UserEnginePath][GameName]/maps</var>
+	
+	<var name="pause">@timeout /t 10</var>
+	
+	<!-- Variables -->
+	<var name="lightmapsize">1024</var>     // default external lightmap size in pixels
+	<var name="outputformat">obj</var>      // temporary output format is always Wavefront OBJ
+	<var name="rotation">180</var>          // needed to make it face in the right direction in Creator Hub
+	<var name="scale">0.015625</var>         // needed to scale it down to Decentraland Dimensions
+	<var name="subdivisions">4</var>        // Quality of Patches. the higher the number, the more Subdivisions (Tris)
+	<var name="smoothangle">30</var>        // Normal Smooth angle, needed for curved surfaces with Normals
+	
+	<build name="---------------------------"></build>
+
+	<build name="Export to GLB (High Quality)">
+
+		<command>@SET PATH=%PATH%;[RadiantPath]/libraries; 2&gt;nul</command>
+		
+		<command>@[pythonpath] [scriptpath]echo.py "Starting Build process for "[MapName]</command>
+
+		<!-- CLEANUP LOGS -->
+		<command>@[pythonpath] [scriptpath]echo.py "- Deleting old Logfile"</command>
+		<command>@cd [logpath] 2&gt;nul</command>
+		<command>@del [logfilename].old 2&gt;nul</command>
+		<command>@ren [logfilename].log [logfilename].old 2&gt;nul</command>
+		<command>@cd [RadiantPath] 2&gt;nul</command>
+
+		<!-- COMPILE BSP and convert to OBJ -->
+		<command>@[pythonpath] [scriptpath]echo.py "- Building BSP"</command>
+		<command>@[q3map2] -meta -patchmeta -keeplights -subdivisions [subdivisions] &quot;[MapFile]&quot; &gt;&gt; &quot;[logpath][logfilename].log&quot;</command>
+
+		<!-- RENDER BSP LIGHTMAP
+		<command>@python.exe [scriptpath]echo.py "- Calculating Lightmap"</command>
+		<command>@[q3map2] -light -fast -patchshadows -dirty -external -lightmapsize [lightmapsize] &quot;[MapFile]&quot; &gt;&gt; &quot;[logpath][logfilename].log&quot;</command>
+		-->
+
+		<!-- Converting BSP to OBJ -->
+		<command>@[pythonpath] [scriptpath]echo.py "- Converting BSP to OBJ"</command>
+		<command>@[q3map2] -convert -format [outputformat] &quot;[BspFile]&quot; &gt;&gt; &quot;[logpath][logfilename].log&quot;</command>
+
+		<!-- Fixing MTL Texture paths -->
+		<command>@[pythonpath] [scriptpath]echo.py "- Fixing MTL Texture paths"</command>
+		<command>@[pythonpath] [scriptpath]fixmtl.py &quot;[BspFile]&quot; &gt;&gt; &quot;[logpath][logfilename].log&quot;</command>
+
+		<!-- Scale OBJ to DCL target dimensions -->
+		<command>@[pythonpath] [scriptpath]echo.py "- Scaling OBJ to DCL Dimensions"</command>
+		<command>@[pythonpath] [scriptpath]scale.py &quot;[BspFile]&quot; [scale] [rotation] &gt;&gt; &quot;[logpath][logfilename].log&quot;</command>
+		
+		<!-- Convert OBJ to GLB -->
+		<command>@[pythonpath] [scriptpath]echo.py "- Converting OBJ to GLB"</command>
+		<command>@[pythonpath] [scriptpath]obj2glb.py &quot;[BspFile]&quot; --smooth-angle=[smoothangle]</command>
+		 
+		<!-- Compress the GLB -->
+		<command>@[pythonpath] [scriptpath]echo.py "- Compressing GLB"</command>
+		<command>@[pythonpath] [scriptpath]compressglb.py &quot;[BspFile]&quot; --maxsize 1024 --quality 90</command>
+
+		<!-- CLEANUP -->
+		<command>@[pythonpath] [scriptpath]echo.py "- Cleanup temporary files"</command>
+		<command>@for %%I in (&quot;[BspFile]&quot;) do @cd /d &quot;%%~dpI&quot; 2&gt;nul</command>
+		<command>@del &quot;[MapName].mtl&quot; 2&gt;nul</command>
+		<command>@del &quot;[MapName].[outputformat]&quot; 2&gt;nul</command>
+		<command>@del &quot;[MapName]_scaled.[outputformat]&quot; 2&gt;nul</command>
+		<command>@del &quot;[MapName]_ac.map&quot; 2&gt;nul</command>
+		<command>@del *.bak 2&gt;nul</command>
+		<command>@del *.caulk 2&gt;nul</command>
+		<command>@del *.lin 2&gt;nul</command>
+		<command>@del *.srf 2&gt;nul</command>
+		<command>@del *.bsp 2&gt;nul</command>
+		
+		<!-- Preview the GLB -->
+		<command>@[pythonpath] [scriptpath]echo.py "- GLB Preview of [MapName]"</command>
+		<command>@[viewerpath] &quot;[BspFile]&quot;</command>
+		
+	</build>
+	
+	<build name="---------------------------"></build>
+	
+	<build name="Compress GLB (High Quality)">
+	
+		<!-- Compress the GLB -->
+		<command>@[pythonpath] [scriptpath]echo.py "Compressing GLB (High Quality)"</command>
+		<command>@[pythonpath] [scriptpath]compressglb.py &quot;[BspFile]&quot; --maxsize 1024 --quality 90</command>
+
+		<!-- Preview the GLB -->
+		<command>@[viewerpath] &quot;[BspFile]&quot;</command>
+		
+	</build>
+
+	<build name="Compress GLB (Medium Quality)">
+	
+		<!-- Compress the GLB -->
+		<command>@[pythonpath] [scriptpath]echo.py "Compressing GLB (Medium Quality)"</command>
+		<command>@[pythonpath] [scriptpath]compressglb.py &quot;[BspFile]&quot; --maxsize 1024 --quality 70</command>
+
+		<!-- Preview the GLB -->
+		<command>@[viewerpath] &quot;[BspFile]&quot;</command>
+		
+	</build>
+
+	<build name="Compress GLB (Low Quality)">
+	
+		<!-- Compress the GLB -->
+		<command>@[pythonpath] [scriptpath]echo.py "Compressing GLB (Low Quality)"</command>
+		<command>@[pythonpath] [scriptpath]compressglb.py &quot;[BspFile]&quot; --maxsize 512 --quality 70</command>
+
+		<!-- Preview the GLB -->
+		<command>@[viewerpath] &quot;[BspFile]&quot;</command>
+		
+	</build>
+	
+	<build name="Compress GLB (Stylized)">
+	
+		<!-- Compress the GLB -->
+		<command>@[pythonpath] [scriptpath]echo.py "Compressing GLB (Stylized)"</command>
+		<command>@[pythonpath] [scriptpath]compressglb.py &quot;[BspFile]&quot; --maxsize 256 --quality 70</command>
+
+		<!-- Preview the GLB -->
+		<command>@[viewerpath] &quot;[BspFile]&quot;</command>
+		
+	</build>
+
+	<build name="---------------------------"></build>
+
+	<build name="Convert GLB embedded to GLTF external">
+	
+		<!-- Convert the GLB -->
+		<command>@[pythonpath] [scriptpath]echo.py "Convert GLB embedded to GLTF external"</command>
+		<command>@[pythonpath] [scriptpath]glb2gltf.py &quot;[BspFile]&quot;</command>
+
+		<!-- Preview the GLB -->
+		<command>@[viewerpath] &quot;[BspFile]&quot;</command>
+		
+	</build>
+
+	<build name="---------------------------"></build>
+	
+	<build name="GLB Viewer">
+	
+		<command>@[pythonpath] [scriptpath]echo.py "GLB Preview of [MapName]"</command>
+
+		<!-- Preview the GLB -->
+		<command>@[viewerpath] &quot;[BspFile]&quot;</command>
+
+	</build>
+		
+</project>

@@ -1,0 +1,141 @@
+{
+   "accessors" : [
+      {
+         "bufferView" : 0,
+         "byteOffset" : 0,
+         "componentType" : 5123,
+         "count" : 522,
+         "max" : [ 257 ],
+         "min" : [ 0 ],
+         "type" : "SCALAR"
+      },
+      {
+         "bufferView" : 1,
+         "byteOffset" : 0,
+         "componentType" : 5126,
+         "count" : 258,
+         "max" : [ 40.234375, 119.703125, 32 ],
+         "min" : [ -38.15625, 0.07812199741601944, -26.5781364440918 ],
+         "type" : "VEC3"
+      },
+      {
+         "bufferView" : 2,
+         "byteOffset" : 0,
+         "componentType" : 5126,
+         "count" : 258,
+         "type" : "VEC3"
+      },
+      {
+         "bufferView" : 3,
+         "byteOffset" : 0,
+         "componentType" : 5126,
+         "count" : 258,
+         "max" : [ 0.9830089807510376, 0.9487149715423584 ],
+         "min" : [ 0.01998599991202354, 0.03973698616027832 ],
+         "type" : "VEC2"
+      }
+   ],
+   "asset" : {
+      "extras" : {
+         "date" : "Fri Oct 10 02:43:39 2025",
+         "website" : "http://www.unwrap3d.com"
+      },
+      "generator" : "Ultimate Unwrap3D Pro 4 (x64) v4.07",
+      "version" : "2.0"
+   },
+   "bufferViews" : [
+      {
+         "buffer" : 0,
+         "byteLength" : 1044,
+         "byteOffset" : 0,
+         "target" : 34963
+      },
+      {
+         "buffer" : 0,
+         "byteLength" : 3096,
+         "byteOffset" : 1044,
+         "byteStride" : 12,
+         "target" : 34962
+      },
+      {
+         "buffer" : 0,
+         "byteLength" : 3096,
+         "byteOffset" : 4140,
+         "byteStride" : 12,
+         "target" : 34962
+      },
+      {
+         "buffer" : 0,
+         "byteLength" : 2064,
+         "byteOffset" : 7236,
+         "byteStride" : 8,
+         "target" : 34962
+      }
+   ],
+   "buffers" : [
+      {
+         "byteLength" : 9300,
+         "uri" : "churchpulpit.bin"
+      }
+   ],
+   "images" : [
+      {
+         "uri" : "churchpulpit.png"
+      }
+   ],
+   "materials" : [
+      {
+         "name" : "pulpit",
+         "pbrMetallicRoughness" : {
+            "baseColorFactor" : [ 1, 1, 1, 1 ],
+            "baseColorTexture" : {
+               "index" : 0
+            },
+            "metallicFactor" : 0
+         }
+      }
+   ],
+   "meshes" : [
+      {
+         "name" : "StaticMesh",
+         "primitives" : [
+            {
+               "attributes" : {
+                  "NORMAL" : 2,
+                  "POSITION" : 1,
+                  "TEXCOORD_0" : 3
+               },
+               "indices" : 0,
+               "material" : 0,
+               "mode" : 4
+            }
+         ]
+      }
+   ],
+   "nodes" : [
+      {
+         "mesh" : 0,
+         "name" : "StaticMesh"
+      }
+   ],
+   "samplers" : [
+      {
+         "magFilter" : 9729,
+         "minFilter" : 9986,
+         "wrapS" : 10497,
+         "wrapT" : 10497
+      }
+   ],
+   "scene" : 0,
+   "scenes" : [
+      {
+         "nodes" : [ 0 ]
+      }
+   ],
+   "textures" : [
+      {
+         "sampler" : 0,
+         "source" : 0
+      }
+   ]
+}

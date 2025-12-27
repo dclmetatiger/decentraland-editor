@@ -1,0 +1,164 @@
+{
+   "accessors" : [
+      {
+         "bufferView" : 0,
+         "byteOffset" : 0,
+         "componentType" : 5123,
+         "count" : 6648,
+         "max" : [ 1425 ],
+         "min" : [ 0 ],
+         "type" : "SCALAR"
+      },
+      {
+         "bufferView" : 1,
+         "byteOffset" : 0,
+         "componentType" : 5126,
+         "count" : 1426,
+         "max" : [ 58.59375, 122.296875, 12.953125 ],
+         "min" : [ -58.59375, -0.015625, -9.281253814697266 ],
+         "type" : "VEC3"
+      },
+      {
+         "bufferView" : 2,
+         "byteOffset" : 0,
+         "componentType" : 5126,
+         "count" : 1426,
+         "type" : "VEC3"
+      },
+      {
+         "bufferView" : 3,
+         "byteOffset" : 0,
+         "componentType" : 5126,
+         "count" : 1426,
+         "max" : [ 0.9833679795265198, 0.9969549775123596 ],
+         "min" : [ 0.003044999903067946, 0.006397008895874023 ],
+         "type" : "VEC2"
+      }
+   ],
+   "asset" : {
+      "extras" : {
+         "date" : "Fri Oct 10 03:28:44 2025",
+         "website" : "http://www.unwrap3d.com"
+      },
+      "generator" : "Ultimate Unwrap3D Pro 4 (x64) v4.07",
+      "version" : "2.0"
+   },
+   "bufferViews" : [
+      {
+         "buffer" : 0,
+         "byteLength" : 13296,
+         "byteOffset" : 0,
+         "target" : 34963
+      },
+      {
+         "buffer" : 0,
+         "byteLength" : 17112,
+         "byteOffset" : 13296,
+         "byteStride" : 12,
+         "target" : 34962
+      },
+      {
+         "buffer" : 0,
+         "byteLength" : 17112,
+         "byteOffset" : 30408,
+         "byteStride" : 12,
+         "target" : 34962
+      },
+      {
+         "buffer" : 0,
+         "byteLength" : 11408,
+         "byteOffset" : 47520,
+         "byteStride" : 8,
+         "target" : 34962
+      }
+   ],
+   "buffers" : [
+      {
+         "byteLength" : 58928,
+         "uri" : "male_world.bin"
+      }
+   ],
+   "images" : [
+      {
+         "uri" : "male_world.png"
+      }
+   ],
+   "materials" : [
+      {
+         "name" : "male",
+         "pbrMetallicRoughness" : {
+            "baseColorFactor" : [ 1, 1, 1, 1 ],
+            "baseColorTexture" : {
+               "index" : 0
+            },
+            "metallicFactor" : 0
+         }
+      }
+   ],
+   "meshes" : [
+      {
+         "name" : "StaticMesh",
+         "primitives" : [
+            {
+               "attributes" : {
+                  "NORMAL" : 2,
+                  "POSITION" : 1,
+                  "TEXCOORD_0" : 3
+               },
+               "indices" : 0,
+               "material" : 0,
+               "mode" : 4
+            }
+         ]
+      }
+   ],
+   "nodes" : [
+      {
+         "children" : [ 2, 4 ],
+         "name" : "SkelRoot"
+      },
+      {
+         "mesh" : 0,
+         "name" : "StaticMesh"
+      },
+      {
+         "children" : [ 3 ],
+         "name" : "SkelRoot",
+         "rotation" : [ 0, 0, 0, 1 ],
+         "scale" : [ 1, 1, 1 ],
+         "translation" : [ 0, 0, 0 ]
+      },
+      {
+         "name" : "StaticMesh0",
+         "rotation" : [ 0, 0, 0, 1 ],
+         "scale" : [ 1, 1, 1 ],
+         "translation" : [ 0, -61.140625, -1.835936069488525 ]
+      },
+      {
+         "name" : "StaticMesh",
+         "rotation" : [ 0, 0, 0, 1 ],
+         "scale" : [ 1, 1, 1 ],
+         "translation" : [ 0, 0, 0 ]
+      }
+   ],
+   "samplers" : [
+      {
+         "magFilter" : 9729,
+         "minFilter" : 9986,
+         "wrapS" : 10497,
+         "wrapT" : 10497
+      }
+   ],
+   "scene" : 0,
+   "scenes" : [
+      {
+         "nodes" : [ 0, 1 ]
+      }
+   ],
+   "textures" : [
+      {
+         "sampler" : 0,
+         "source" : 0
+      }
+   ]
+}

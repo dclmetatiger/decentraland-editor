@@ -1,0 +1,10 @@
+// this file lists all the separate shader files
+
+alpha
+common
+dcl
+frankfurt_alpha
+halloween
+models
+nature
+starducks

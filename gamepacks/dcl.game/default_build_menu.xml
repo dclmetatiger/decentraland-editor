@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+build commands
+[RadiantPath]: path to Radiant .. C:\Program Files\Gtkradiant
+[EnginePath]: path to the engine .. C:\quake3\ C:\Program Files\Quake III Arena\ /usr/local/games/quake3/
+-->
+<project version="2.0">
+
+  <var name="q3map2">"[RadiantPath]q3map2.[ExecutableType]" -v<cond value="[MonitorAddress]"> -connect [MonitorAddress]</cond> -game quake3 -fs_basepath "[EnginePath]"<cond value="[GameName]"> -fs_game [GameName]</cond></var>
+  
+  <var name="mappath">[UserEnginePath][GameName]/maps/[MapName]</var>
+  
+  <build name="Export to OBJ">
+  <command>[q3map2] -meta -patchmeta -subdivisions 5 &quot;[MapFile]&quot;</command>
+  <command>[q3map2] -convert -format obj 5 &quot;[BspFile]&quot;</command>
+  <command>python.exe scale.py &quot;[mappath].obj&quot; &quot;[mappath]_scaled.obj&quot; 0.015625</command>
+  </build>  
+  
+  <build name="Export to OBJ with Lightmap">
+  <command>[q3map2] -meta -patchmeta -subdivisions 5 &quot;[MapFile]&quot;</command>
+  <command>[q3map2] -light -fast -patchshadows -external -lightmapsize 1024 &quot;[MapFile]&quot; </command>
+  <command>[q3map2] -convert -format obj 5 &quot;[BspFile]&quot;</command>
+  </build>    
+
+</project>
+
