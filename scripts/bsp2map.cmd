@@ -1,0 +1,1 @@
+q3map2.exe -game et -fs_basepath C:\DCL -fs_game etmain -convert -format map etmain/maps/%1

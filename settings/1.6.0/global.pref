@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<qpref version="1.0">
+<epair name="GUITheme">1</epair>
+<epair name="gamePrompt">false</epair>
+<epair name="gamefile">dcl.game</epair>
+</qpref>

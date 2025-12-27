@@ -1,0 +1,12 @@
+*.glb
+dcl.game/__pycache__/
+dcl.game/__pycache__/*.*
+logs/*.*
+scripts/__pycache__/
+scripts/__pycache__/*.*
+settings/1.6.0/radiant.log
+settings/1.6.0/qe3bsp.bat
+init.cmd
+reset.cmd
+update.cmd
+sync.ffs_db

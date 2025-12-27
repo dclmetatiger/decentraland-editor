@@ -1,0 +1,31 @@
+
+// entity 0
+{
+"classname" "worldspawn"
+// brush 0
+{
+brushDef
+{
+( -24 28 -40 ) ( -24 28 36 ) ( -24 8 36 ) ( ( 0.03125 0 0 ) ( 0 0.03125 0.25 ) ) common/caulk 0 0 0
+( -4 32 20 ) ( 4 12 20 ) ( -4 12 20 ) ( ( 0.03125 0 0 ) ( 0 0.03125 0 ) ) common/caulk 0 0 0
+( -4 8 36 ) ( 4 8 36 ) ( 4 8 -40 ) ( ( 0.03125 0 0 ) ( 0 0.03125 0.25 ) ) common/caulk 0 0 0
+( 24 8 36 ) ( 24 28 -40 ) ( 24 8 -40 ) ( ( 0.03125 0 0 ) ( 0 0.03125 0.25 ) ) common/caulk 0 0 0
+( 4 28 -28 ) ( -4 28 -28 ) ( 4 8 -28 ) ( ( 0.03125 0 0 ) ( 0 0.03125 0 ) ) common/caulk 0 0 0
+( -4 32 36 ) ( -4 32 -40 ) ( 4 32 -40 ) ( ( 0.03125 0 0 ) ( 0 0.03125 0.25 ) ) common/caulk 0 0 0
+}
+}
+}
+// entity 1
+{
+"classname" "misc_model"
+"origin" "0 8 -12"
+"model" "models/mapobjects/light/lamp.gltf"
+"_cs" "1"
+"_rs" "1"
+}
+// entity 2
+{
+"classname" "info_player_start"
+"origin" "0 -128 0"
+"angle" "90"
+}

@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<!--
+et_entities.def
+-->
+<classes>
+
+<group name="func_group" color="0 .5 .8">
+-------- KEYS --------
+(none)
+-------- Q3MAP2 KEYS --------
+<targetname key="_targetname" name="Target Name">Used to attach a misc_model entity to this entity.</targetname>
+<real key="_lightmapscale" name="Lightmap Scale">Floating point value scaling the resolution of lightmaps on brushes/patches in this entity (default 1.0).</real>
+<integer key="_castshadows;_cs" name="Shadow Caster Level">Allows per-entity control over shadow casting. Defaults to 0 on entities, 1 on world. 0 = no shadow casting. 1 = cast shadows on world. > 1 = cast shadows on entities with _rs (or _receiveshadows) with the corresponding value, AND world. Negative values imply same, but DO NOT cast shadows on world.</integer>
+<integer key="_receiveshadows;_rs" name="Shadow Reciever Level">Allows per-entity control over shadow reception. Defaults to 1 on everything (world shadows). 0 = receives NO shadows. > 1 = receive shadows only from corresponding keyed entities (see above) and world. &lt; 1 = receive shadows ONLY from corresponding keyed entities.</integer>
+-------- SPAWNFLAGS --------
+(none)
+-------- NOTES --------
+Used to group brushes together just for editor convenience.  They are turned into normal brushes in the export process.
+</group>
+
+<!--
+=============================================================================
+-->
+
+<point name="info_player_start" color="0 1.0 0" box="-16 -16 -16 16 16 16">
+<real key="angle" name="Angle">Used as a view direction of the Player when loading the map in Editor</real>
+-------- KEYS --------
+(none)
+-------- SPAWNFLAGS --------
+(none)
+-------- NOTES --------
+A map needs this or it won't export at all. It is also the starting point / view angle of the Editor camera. Does not get exported as an object.
+</point>
+
+<!--
+=============================================================================
+-->
+
+<point name="info_null" color="0 1.0 0" box="-4 -4 -4 4 4 4">
+-------- KEYS --------
+(none)
+-------- SPAWNFLAGS --------
+(none)
+-------- NOTES --------
+Used as a positional target for calculations in the utilities (spotlights, etc). Does not get exported as an object.
+</point>
+
+<!--
+=============================================================================
+-->
+
+<point name="player_dimension" color="0.82 0.62 0.52" box="-32 -16 -48 32 16 96">
+-------- KEYS --------
+(none)
+-------- SPAWNFLAGS --------
+(none)
+-------- NOTES --------
+This dummy entity has the approximate size of a human avatar ingame to check if the dimensions of the map geometry matches the size of the player. Does not get exported as an object.
+</point>
+
+<!--
+=============================================================================
+-->
+
+<point name="light" color="0 1 0" box="-8 -8 -8 8 8 8">
+-------- KEYS --------
+<real key="light" name="Light">Overrides the default 300 intensity.</real>
+<color key="_color" name="Light Color">Weighted RGB value of light color (default white - 1.0 1.0 1.0).</color>
+<real key="radius" name="Radius">Overrides the default 64 unit radius of a spotlight at the target point.</real>
+<real key="fade" name="Fade">Falloff/radius adjustment value. Multiply the run of the slope by "fade" (1.0f default only valid for "Linear" lights wolf)</real>
+<target key="target" name="Target">Lights pointed at a target will be spotlights.</target>
+-------- Q3MAP2 KEYS --------
+<boolean key="_sun" name="Directional">Set this key to 1 on a spotlight to make an infinite sun light.</boolean>
+<real key="_samples" name="Samples">Makes Q3map2 replace the light with several smaller lights for smoother illumination. Values of 4 or so will be adequate.</real>
+<real key="_deviance" name="Deviance">Radius within which additional samples will be placed.</real>
+-------- SPAWNFLAGS --------
+<flag key="NONLINEAR" name="Non-linear" bit="0">Checkbox gives inverse square falloff instead of linear</flag>
+<flag key="ANGLE" name="Angle" bit="1">Adds light:surface angle calculations (only valid for "Linear" lights wolf)</flag>
+<flag key="Q3MAP_NON-DYNAMIC" name="Non-dynamic" bit="4">Specifies that this light should not contribute to the world's 'light grid' and therefore will not light dynamic models in the game.(wolf)</flag>
+-------- NOTES --------
+Non-displayed light to lighten the lightmap. Lights pointed at a info_null target will be spotlights.
+</point>
+
+<point name="misc_model" color="1 0 0" box="-16 -16 -16 16 16 16">
+-------- KEYS --------
+<model key="model" name="Model">Arbitrary model file to display</model>
+<targetname key="_targetname" name="Target Name">Used to attach a misc_model entity to this entity.</targetname>
+<real key="modelscale" name="Scale">Scale multiplier (defaults to 1x)</real>
+<real3 key="modelscale_vec" name="Scale vector">Per-axis scale multiplier. Defaults to 1 1 1, scales each axis as requested. Overrides "Scale", so if you have both, the "Scale" is ignored</real3>
+<real key="_lightmapscale" name="Lightmap Scale">Floating point value scaling the resolution of lightmaps on brushes/patches in this entity (default 1.0).</real>
+<integer key="_castshadows;_cs" name="Shadow Caster Level">Allows per-entity control over shadow casting. Defaults to 0 on entities, 1 on world. 0 = no shadow casting. 1 = cast shadows on world. > 1 = cast shadows on entities with _rs (or _receiveshadows) with the corresponding value, AND world. Negative values imply same, but DO NOT cast shadows on world.</integer>
+<integer key="_receiveshadows;_rs" name="Shadow Reciever Level">Allows per-entity control over shadow reception. Defaults to 1 on everything (world shadows). 0 = receives NO shadows. > 1 = receive shadows only from corresponding keyed entities (see above) and world. &lt; 1 = receive shadows ONLY from corresponding keyed entities.</integer>
+<real key="angle" name="Angle">Simple Z-Axis Rotation angle for Models</real>
+<real3 key="angles" name="Angle">Complex XYZ Axis Rotation angle for Models</real3>
+-------- SPAWNFLAGS --------
+<flag key="CASTSHADOWS" name="Start off" bit="0">Toggles the model casting shadows on the map surfaces.</flag>
+<flag key="AUTOLIGHTMAP" name="Start off" bit="2">Sets the forcemeta spawnflag, automatically adding q3map_forcemeta to any shaders used by the model (which, in turn, allows the model to become lightmapped). This, effectively, is the "lightmapped model" spawnflag.</flag>
+-------- NOTES --------
+Model that will be compiled into the map geometry. Model path must start from inside mod folder, e.g. models/mapobjects/light/lantern.obj
+</point>
+
+<!--
+=============================================================================
+-->
+
+<group name="worldspawn" color="0 0 0">
+-------- KEYS --------
+<real key="_ambient;ambient" name="Ambient Intensity">Adds a constant value to overall lighting. Use is not recommended. Ambient light will have a tendency to flatten out variations in light and shade.</real>
+<color key="color" name="Ambient Color">RGB value for ambient light color (default is 0 0 0).</color>
+<integer3 key="gridsize" name="Dynamic Light Granularity">Granularity of the lightgrid created by q3map. Value is three integers separated by spaces, representing number of units between grid points in X Y Z. Default gridsize value is 128 128 256. Use larger powers of 2 to reduce BSP size and compile time on very large maps.</integer3>
+<integer key="_blocksize" name="BSP Block Size">q3map always splits the BSP tree along the planes X=_blocksize*n and Y=_blocksize*n. Default _blocksize value is 1024. Increase the blocksize using larger powers of 2 to reduce compile times on very large maps with a low structural brush density.</integer>
+<string key="sun" name="Sun shader">Shader to use for 'sun' image. May be overriden by shader.</string>
+<integer2 key="mapcoordsmins" name="mapcoordsmins">Top left corner coordinate. Example "-256 256".</integer2>
+<integer2 key="mapcoordsmaxs" name="mapcoordsmaxs">Lower right corner coordinate. Example "256 -256". Both mapcoordsmins and mapcoordsmaxs must be set for command map and auto map to work properly.</integer2>
+-------- NOTES --------
+Every map must have exactly one worldspawn. Just create a caulked brush and Q3MAP2 will be happy with that.
+</group>
+
+</classes>
